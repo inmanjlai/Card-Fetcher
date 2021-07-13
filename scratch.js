@@ -1,21 +1,21 @@
 let database = {
     cards: {
-        "regrowth": { name: "Regrowth", color: "Green", cmc: 2, type: "Sorcery" },
-        "lightning bolt": { name: "Lightning Bolt", color: "Red", cmc: 1, type: "Instant" },
-        "dark ritual": { name: "Dark Ritual", color: "Black", cmc: 1, type: "Instant" },
-        "llanowar elves": { name: "Llanowar Elves", color: "Green", cmc: 1, type: "Creature" },
-        "brainstorm": { name: "Brainstorm", color: "Blue", cmc: 1, type: "Instant" },
-        "snapcaster mage": { name: "Snapcaster Mage", color: "Blue", cmc: 2, type: "Creature" },
-        "shivan dragon": { name: "Shivan Dragon", color: "Red", cmc: 6, type: "Creature" },
-        "omniscience": { name: "Omniscience", color: "Blue", cmc: 9, type: "Enchantment" },
-        "lurking predators": { name: "Lurking Predators", color: "Green", cmc: 6, type: "Enchantment" },
-        "sol ring": {name: "Sol Ring", color: "Colorless", cmc: 1, type: "Artifact" },
-        "planar bridge": { name: "Planar Bridge", color: "Colorless", cmc: 6, type: "Artifact" },
-        "ral zarek": { name: "Ral Zarek", color: "Red-Blue", cmc: 4, type: "Planeswalker" },
-        "memory plunder": { name: "Memory Plunder", color: "Blue-Black", cmc: 4, type: "Instant" },
-        "sylvan reclamation": { name: "Sylvan Reclamation", color: "Green-White", cmc: 5, type: "Instant" },
-        "vampiric tutor": { name: "Vampiric Tutor", color: "Black", cmc: 1, type: "Instant" },
-        "sepulchral primordial": { name: "Sepulchral Primordial", color: "Black", cmc: 7, type: "Creature"}
+        "regrowth": { name: "Regrowth", color: "Green", cmc: 2, type: "Sorcery", img: "./imgs/regrowth.png" },
+        "lightning bolt": { name: "Lightning Bolt", color: "Red", cmc: 1, type: "Instant", img: "./imgs/lightningbolt.png" },
+        "dark ritual": { name: "Dark Ritual", color: "Black", cmc: 1, type: "Instant", img: "./imgs/darkritual.png"},
+        "llanowar elves": { name: "Llanowar Elves", color: "Green", cmc: 1, type: "Creature", img: "./imgs/llanowarelves.png" },
+        "brainstorm": { name: "Brainstorm", color: "Blue", cmc: 1, type: "Instant", img: "./imgs/brainstorm.png" },
+        "snapcaster mage": { name: "Snapcaster Mage", color: "Blue", cmc: 2, type: "Creature", img: "./imgs/snapcastermage.png" },
+        "shivan dragon": { name: "Shivan Dragon", color: "Red", cmc: 6, type: "Creature",img: "./imgs/shivandragon.png" },
+        "omniscience": { name: "Omniscience", color: "Blue", cmc: 9, type: "Enchantment", img: "./imgs/omniscience.png" },
+        "lurking predators": { name: "Lurking Predators", color: "Green", cmc: 6, type: "Enchantment", img: "./imgs/lurkingpredators.png" },
+        "sol ring": {name: "Sol Ring", color: "Colorless", cmc: 1, type: "Artifact", img: "./imgs/solring.png" },
+        "planar bridge": { name: "Planar Bridge", color: "Colorless", cmc: 6, type: "Artifact", img: "./imgs/planarbridge.png" },
+        "ral zarek": { name: "Ral Zarek", color: "Red-Blue", cmc: 4, type: "Planeswalker", img: "./imgs/ralzarek.png" },
+        "memory plunder": { name: "Memory Plunder", color: "Blue-Black", cmc: 4, type: "Instant", img: "./imgs/memoryplunder.png" },
+        "sylvan reclamation": { name: "Sylvan Reclamation", color: "Green-White", cmc: 5, type: "Instant", img: "./imgs/sylvanreclamation.png" },
+        "vampiric tutor": { name: "Vampiric Tutor", color: "Black", cmc: 1, type: "Instant", img: "./imgs/vampirictutor.png" },
+        "sepulchral primordial": { name: "Sepulchral Primordial", color: "Black", cmc: 7, type: "Creature", img: "./imgs/sepulchralprimordial.png"}
     },
 
     commanders: {
@@ -56,7 +56,7 @@ class cardFetcher {
         let commandersColor;
         if(commanderName in this.database.commanders){
             commandersColor = this.database.commanders[commanderName].color;
-        } else throw new Error("That commander doesn't exist, try again.");
+        } else alert("That commander doesn't exist, try again.");
 
         for(let card in this.database.cards){
             let currentCard = this.database.cards[card];
@@ -78,12 +78,30 @@ class cardFetcher {
     // THIS IS THE END OF THE CLASS
 }
 
-function localTestCases() {
-    let newCardFetcher = new cardFetcher(database);
+function showRecommendations(){
+    let fetch = new cardFetcher(database);
+    let commanderName = document.querySelector('#commander-name').value;
+    
+    let recommendations = fetch.recommendCards(commanderName);
 
-    // console.log(newCardFetcher.getCardInfo("lurking predators"));
+    console.log(recommendations);
 
-    console.log(newCardFetcher.recommendCards('birgi, god of storytelling'))
+    document.querySelector(".mainState").style.display="none";
+    document.querySelector(".recommendState").style.display="grid";
+
+    let j = 1;
+    for(let i = 0; i < recommendations.length; i++){
+        let currentCard = recommendations[i];
+        document.querySelector(`.card${j}`).style.visibility="visible";
+        document.querySelector(`.card${j}`).src=currentCard.img;
+        j++;
+    }
+
+    
 }
 
-localTestCases();
+function changeLarge(state){
+    let card = document.querySelector(state).src;
+    console.log(card);
+    document.querySelector(state).src=card;
+}

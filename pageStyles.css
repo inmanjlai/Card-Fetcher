@@ -1,0 +1,79 @@
+/* *{
+    outline: 5px solid orange;
+} */
+body{
+    background-color: slategray;
+    width: 100vw;
+    height: 100vh;
+}
+
+.recommendState{
+    display: none;
+    grid-template-columns: 60% 40%;
+    grid-template-areas: "littleCards showcase";
+}
+
+img{
+    width: 200px;
+    margin: 10px;
+}
+
+.littleCards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "card1 card2 card3"
+    "card4 card5 card6"
+    "card7 card8 card9";
+    justify-content: space-between;
+}
+
+.card1{
+    visibility: hidden;
+    grid-area:card1;
+}
+.card2{
+    visibility: hidden;
+    grid-area:card2;
+
+}
+.card3{
+    visibility: hidden;
+    grid-area:card3;
+}
+.card4{
+    visibility: hidden;
+    grid-area:card4;
+}
+.card5{
+    visibility: hidden;
+    grid-area:card5;
+}
+.card6{
+    visibility: hidden;
+    grid-area:card6;
+}
+.card7{
+    visibility: hidden;
+    grid-area:card7;
+}
+.card8{
+    visibility: hidden;
+    grid-area:card8;
+}
+.card9{
+    visibility: hidden;
+    grid-area:card9;
+}
+.showcase{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: lightsteelblue;
+    grid-area:showcase;
+}
+.showcase img{
+    width: 500px;
+    visibility: hidden;
+}

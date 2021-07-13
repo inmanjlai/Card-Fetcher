@@ -1,0 +1,62 @@
+*{
+    /* outline: 5px solid orange; */
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: slategray;
+    color: snow;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.mainState{
+    display: grid;
+    grid-template-rows: 4fr 1fr 1fr 1fr 4fr;
+    grid-template-areas: 
+    "..."
+    "h1"
+    "input"
+    "button"
+    "...";
+}
+
+h1{
+    align-self: center;
+    justify-self: center;
+    grid-area:h1;
+}
+
+input{
+    justify-self: center;
+    width: 500px;
+    height: 30px;
+    grid-area:input;
+
+}
+
+button{
+    justify-self: center;
+    width: 300px;
+    height: 40px;
+    border: none;
+    transition: 0.2s;
+    border-radius: 5px;
+    grid-area:button;
+
+}
+
+button:hover{
+    /* width:350px; */
+    /* height: 60px; */
+    /* font-size: large; */
+    background-color: salmon;
+    /* font-weight: bolder; */
+}
+
+a{
+    justify-self: center;
+    grid-area:button;
+    text-decoration: none;
+    color: black;
+}
