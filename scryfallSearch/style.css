@@ -101,6 +101,7 @@ p {
     .main{
         margin: 0;
         padding: 30px 0px;
+        padding-left: 3rem;
     }
 
     .card{
