@@ -87,3 +87,53 @@ p {
 .cardDetails h3 {
     text-align: center;
 }
+
+@media screen and (max-width: 375px){
+
+    body{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: flex-end;
+    }
+
+
+    .main{
+        margin: 0;
+        padding: 30px 0px;
+    }
+
+    .card{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 40% 60%;
+        grid-template-areas:
+        "img"
+        "card";
+    }
+    
+    .cardDetails{
+        background: none;
+        box-shadow: none;
+        font-size: 2rem;
+        width: 100%;
+        grid-area: card;
+        overflow: scroll;
+        border-radius: 10px;
+        box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.3), inset -4px -4px 10px rgba(0, 0, 0, 0.3);
+
+    }
+
+    .cardImg{
+        grid-area: img;
+        max-width: 300px;
+        min-height: 50px;
+        height: auto;
+        border-radius: 15px;
+    }
+
+    .card p {
+        font-size: smaller;
+        
+    }
+}
